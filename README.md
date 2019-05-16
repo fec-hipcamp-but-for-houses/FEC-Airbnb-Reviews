@@ -1,7 +1,7 @@
 # Project Name
 
 > Project description
-
+  AirBNB item page----- This particular repo focuses on the reviews section of the page
 ## Related Projects
 
   - https://github.com/teamName/repo
