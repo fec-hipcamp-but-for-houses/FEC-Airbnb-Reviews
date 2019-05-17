@@ -16,12 +16,12 @@ CREATE TABLE Messages (
   profile_picture TEXT,
   listing INT,
   date DATE,
-  accuracy INT,
-  communication INT,
-  cleanliness INT,
-  check_in INT,
-  value INT,
-  location INT,
+  accuracy DECIMAL(4,2),
+  communication DECIMAL(4,2),
+  cleanliness DECIMAL(4,2),
+  check_in DECIMAL(4,2),
+  value DECIMAL(4,2),
+  location DECIMAL(4,2),
   Foreign Key(listing) REFERENCES Listing(id)
 );
 
