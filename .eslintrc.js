@@ -20,6 +20,9 @@ module.exports = {
     'react',
   ],
   rules: {
-    
+    'import/extensions': {
+      jsx: 'always',
+    },
+    'no-console': 'off',
   },
 };

@@ -10,7 +10,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env']
+            presets: ['@babel/preset-react', '@babel/preset-env'],
           },
         },
       },
@@ -18,6 +18,6 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, '/client/public/');
-  }
+    path: path.join(__dirname, '/client/public/'),
+  },
 };
