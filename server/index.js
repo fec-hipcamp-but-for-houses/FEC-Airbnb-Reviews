@@ -5,7 +5,6 @@ const model = require('../db/model.js');
 
 const app = express();
 app.use(bodyParser.json());
-const port = 3001;
 
 app.use(express.static(path.join(__dirname, '../client/public')));
 
@@ -23,5 +22,4 @@ app.post('/reviews', (req, res) => {
   });
 });
 
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+module.exports = app;
