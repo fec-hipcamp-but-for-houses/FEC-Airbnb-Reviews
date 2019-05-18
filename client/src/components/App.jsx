@@ -9,9 +9,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.post('http://localhost:3001/reviews', {
-      randomListing: Math.floor(Math.random() * 100) + 1,
-    })
+    axios.get(`http://localhost:3001/reviews?randomListing=${Math.floor(Math.random() * 100) + 1}`)
       .then((data) => {
         console.log('THE DATA HAS ARRIVED!!!', data);
       })
