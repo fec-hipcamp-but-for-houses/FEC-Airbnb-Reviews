@@ -9,7 +9,7 @@ class EachReview extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <div style={{ borderBottom: 'solid' }}>
           <img src={this.props.review.profile_picture}  />
           <div>{this.props.review.username}</div>
           <div>{this.props.review.date}</div>
