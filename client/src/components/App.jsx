@@ -35,17 +35,23 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {this.state.reviewsData.length}
-        {' '}
-          Reviews
-        <form>
-          <input type="text" value={this.state.query} onChange={this.onChangeHandler} />
-        </form>
         <div>
+          {this.state.reviewsData.length}
+          {' '}
+          Reviews
+          <form>
+            <input type="text" value={this.state.query} onChange={this.onChangeHandler} />
+          </form>
+        </div>
+
+        <div style={{ borderBottom: 'solid' }}>
           6 reviews in the another div!!!!!!!
         </div>
         <div>
           <ReviewList reviews={this.state.reviewsData} />
+        </div>
+        <div>
+          PlaceHolder for the multiple pages
         </div>
       </div>
     );
