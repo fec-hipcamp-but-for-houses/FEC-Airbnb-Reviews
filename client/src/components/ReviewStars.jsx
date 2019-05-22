@@ -15,6 +15,9 @@ const ReviewsDiv = styled.div`
   width: 50%;
   position: inherit;
   justify-content: center;
+  display: table;
+  box-sizing: border-box;
+  font-size: 14px;
 `;
 
 const EachSection = styled.div`
