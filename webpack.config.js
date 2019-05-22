@@ -14,6 +14,11 @@ module.exports = {
           },
         },
       },
+      {
+        test: [/\.css$/],
+        include: path.join(__dirname, '/client/src/'),
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader', options: { sourceMap: true, modules: true, localIdentName: '[local]___[hash:base64:5]' } }],
+      },
     ],
   },
   output: {

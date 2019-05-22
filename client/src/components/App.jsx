@@ -1,6 +1,8 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import axios from 'axios';
 import ReviewList from './MapOverData.jsx';
+import ReviewStars from './ReviewStars.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,24 +31,21 @@ class App extends React.Component {
     e.preventDefault();
     console.log(e.target.value);
     this.setState({ query: e.target.value });
-    console.log(this.state.query);
   }
 
   render() {
     return (
-      <div>
+      <div style={{ padding: 24 }}>
         <div>
           {this.state.reviewsData.length}
           {' '}
           Reviews
-          <form>
+          <form style={{ position: 'relative' }}>
             <input type="text" value={this.state.query} onChange={this.onChangeHandler} />
           </form>
         </div>
 
-        <div style={{ borderBottom: 'solid' }}>
-          6 reviews in the another div!!!!!!!
-        </div>
+        <ReviewStars style={{ borderBottom: 'solid' }} ratings={this.state.reviewsData} />
         <div>
           <ReviewList reviews={this.state.reviewsData} />
         </div>

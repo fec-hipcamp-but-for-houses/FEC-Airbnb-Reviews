@@ -1,3 +1,6 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import EachReview from './EachRview.jsx';
 
