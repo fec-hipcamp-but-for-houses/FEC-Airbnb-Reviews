@@ -2,13 +2,9 @@ const request = require('supertest');
 const app = require('../server/index.js');
 
 describe('POST /reviews', () => {
-  const data = {
-    randomListing: 5,
-  };
   it('responds with data from the server', (done) => {
     request(app)
-      .post('/reviews')
-      .send(data)
+      .get(`/reviews?randomListing=${Math.floor(Math.random() * 100) + 1}`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
