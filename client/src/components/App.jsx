@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import ReviewList from './MapOverData.jsx';
 import ReviewStars from './ReviewStars.jsx';
+import Pagination from './pagination.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,16 +11,28 @@ class App extends React.Component {
 
     this.state = {
       reviewsData: [],
+      pages: [],
+      displayedReviews: [],
       query: '',
     };
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.changePage = this.changePage.bind(this);
   }
 
   componentDidMount() {
     axios.get(`http://localhost:3001/reviews?randomListing=${Math.floor(Math.random() * 100) + 1}`)
       .then((data) => {
-        console.log(Array.isArray(data.data));
-        this.setState({ reviewsData: data.data });
+        const groupedData = [];
+        for (let i = 0; i < data.data.length; i += 5) {
+          const myChunk = data.data.slice(i, i + 5);
+          groupedData.push(myChunk);
+        }
+        console.log(groupedData);
+        this.setState({
+          reviewsData: data.data,
+          pages: groupedData,
+          displayedReviews: groupedData[0],
+        });
       })
       .catch(() => {
         console.log('THIS IS AN ERROR');
@@ -31,6 +44,11 @@ class App extends React.Component {
     e.preventDefault();
     console.log(e.target.value);
     this.setState({ query: e.target.value });
+  }
+
+  changePage(page) {
+    const currentPages = this.state.pages;
+    this.setState({ displayedReviews: currentPages[page - 1] });
   }
 
   render() {
@@ -47,11 +65,11 @@ class App extends React.Component {
 
         <ReviewStars style={{ borderBottom: 'solid' }} ratings={this.state.reviewsData} />
         <div>
-          <ReviewList reviews={this.state.reviewsData} />
+          <ReviewList reviews={this.state.displayedReviews} />
         </div>
-        <div>
-          PlaceHolder for the multiple pages
-        </div>
+        <nav>
+          <Pagination pages={this.state.pages} changePage={this.changePage} />
+        </nav>
       </div>
     );
   }
