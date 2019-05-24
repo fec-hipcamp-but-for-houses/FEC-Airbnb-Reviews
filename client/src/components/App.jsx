@@ -1,3 +1,4 @@
+/* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import axios from 'axios';
@@ -13,10 +14,13 @@ class App extends React.Component {
       reviewsData: [],
       pages: [],
       displayedReviews: [],
+      pageNumber: 0,
       query: '',
     };
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.changePage = this.changePage.bind(this);
+    this.goBack = this.goBack.bind(this);
+    this.goForward = this.goForward.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +36,7 @@ class App extends React.Component {
           reviewsData: data.data,
           pages: groupedData,
           displayedReviews: groupedData[0],
+          pageNumber: 0,
         });
       })
       .catch(() => {
@@ -48,7 +53,29 @@ class App extends React.Component {
 
   changePage(page) {
     const currentPages = this.state.pages;
-    this.setState({ displayedReviews: currentPages[page - 1] });
+    const newPage = page - 1;
+    this.setState({
+      displayedReviews: currentPages[newPage],
+      pageNumber: newPage,
+    });
+  }
+
+  goBack() {
+    let currentPage = this.state.pageNumber;
+    currentPage -= 1;
+    this.setState({
+      displayedReviews: this.state.pages[currentPage],
+      pageNumber: currentPage,
+    });
+  }
+
+  goForward() {
+    let currentPage = this.state.pageNumber;
+    currentPage += 1;
+    this.setState({
+      displayedReviews: this.state.pages[currentPage],
+      pageNumber: currentPage,
+    });
   }
 
   render() {
@@ -64,11 +91,19 @@ class App extends React.Component {
         </div>
 
         <ReviewStars style={{ borderBottom: 'solid' }} ratings={this.state.reviewsData} />
+
         <div>
           <ReviewList reviews={this.state.displayedReviews} />
         </div>
+
         <nav>
-          <Pagination pages={this.state.pages} changePage={this.changePage} />
+          <Pagination
+            pages={this.state.pages}
+            changePage={this.changePage}
+            goBack={this.goBack}
+            goForward={this.goForward}
+            page={this.state.pageNumber}
+          />
         </nav>
       </div>
     );
