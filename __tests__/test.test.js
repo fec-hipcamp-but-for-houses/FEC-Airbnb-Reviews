@@ -1,11 +1,16 @@
-// import Enzyme from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16';
+import React from 'react';
+import Enzyme, { shallow } from 'enzyme';
+import App from '../client/src/components/App.jsx';
 
 
-// Enzyme.configure({ adapter: new Adapter() });
+describe('App', () => {
+  // it('Creates a snapshot', () => {
+  //   const wrapper = shallow(<App />);
+  //   const hidden = wrapper.state().reviewsData;
+  //   expect(true).toBe(true);
+  // });
 
-// describe('App', () => {
-//   it('Creates a snapshot', () => {
-//     expect(true).toBe(true);
-//   });
-// });
+  it('Has a great day', () => {
+    expect(true).toBe(true);
+  });
+});
