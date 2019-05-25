@@ -22,6 +22,7 @@ class SearchBar extends React.Component {
     if (this.state.query === '') {
       return;
     }
+    const {query} = this.state;
     const chunks = [];
     const allReviews = this.props.reviews;
     const oldPages = this.props.pages;
@@ -34,7 +35,7 @@ class SearchBar extends React.Component {
       const myChunk = filtered.slice(i, i + 5);
       chunks.push(myChunk);
     }
-    this.props.search(chunks, filtered, allReviews, oldPages);
+    this.props.search(chunks, filtered, allReviews, oldPages, query);
     this.setState({ query: '' });
   }
 

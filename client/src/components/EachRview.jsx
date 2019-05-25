@@ -6,7 +6,7 @@ import styled from 'styled-components';
 // --------------------- Styling ----------------------------------------
 
 const ImageStyle = styled.img`
-  border-radius: 40%;
+  border-radius: 100%;
    width: 48px;
     height: 48px;
     margin-right: 16px;
@@ -24,6 +24,12 @@ const UsernamePosition = styled.div`
 const ReadMoreSpan = styled.span`
   color: #008489;
 `;
+
+const BorderDiv = styled.div`
+    border-bottom: solid;
+    border-bottom-width: var(--border-rule-border-width, 1px) !important;
+    border-bottom-color: var(--color-divider, #EBEBEB) !important;
+`;
 // ------------------------------------ COMPONENT -------------------------------
 class EachReview extends React.Component {
   constructor(props) {
@@ -39,9 +45,23 @@ class EachReview extends React.Component {
   }
 
   render() {
-    if (this.state.clickedReadMore === false) {
+    if (this.props.review.firstHalf.length < 240) {
       return (
-        <div style={{ borderBottom: 'solid' }}>
+        <BorderDiv style={{ borderBottom: 'solid' }}>
+          <div>
+            <ImageStyle src={this.props.review.profile_picture} />
+            <UsernamePosition>{this.props.review.username}</UsernamePosition>
+            <DateSpan>{this.props.review.date}</DateSpan>
+          </div>
+          <div style={{ margin: 16 }}>
+            {this.props.review.firstHalf}
+          </div>
+        </BorderDiv>
+      );
+    }
+    if (this.state.clickedReadMore === false && this.props.review.firstHalf.length === 240) {
+      return (
+        <BorderDiv style={{ borderBottom: 'solid' }}>
           <div>
             <ImageStyle src={this.props.review.profile_picture} />
             <UsernamePosition>{this.props.review.username}</UsernamePosition>
@@ -53,11 +73,11 @@ class EachReview extends React.Component {
               ...Read More
             </ReadMoreSpan>
           </div>
-        </div>
+        </BorderDiv>
       );
     }
     return (
-      <div style={{ borderBottom: 'solid' }}>
+      <BorderDiv style={{ borderBottom: 'solid' }}>
         <div>
           <ImageStyle src={this.props.review.profile_picture} />
           <UsernamePosition>{this.props.review.username}</UsernamePosition>
@@ -66,7 +86,7 @@ class EachReview extends React.Component {
         <div style={{ margin: 16 }}>
           {this.props.review.firstHalf + this.props.review.lastHalf}
         </div>
-      </div>
+      </BorderDiv>
     );
   }
 }
