@@ -46,14 +46,6 @@ const AllReviewsDiv = styled.div`
     position: relative !important;
 `;
 
-const SearchBarDiv = styled.div`
-    width: 33.3333% !important;
-    float: left !important;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-    min-height: 1px !important;
-    position: relative !important;
-`;
 
 const AllReviewsSpan = styled.span`
       margin: 0px !important;
@@ -234,8 +226,11 @@ class App extends React.Component {
           {this.state.searchReviews.length}
           {' '}
           guests have mentioned
-          {' '}
-          {`"${this.state.query}"`}
+          {' "'}
+          <span style={{ fontWeight: 'bold' }}>
+            {this.state.query}
+          </span>
+          {'"'}
         </div>
 
         <div>
