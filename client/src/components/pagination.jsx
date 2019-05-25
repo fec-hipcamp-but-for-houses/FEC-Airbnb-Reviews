@@ -252,6 +252,9 @@ class Pagination extends React.Component {
             {firstButton}
             ...
             {last5Buttons}
+            <GoUpOne type="button" onClick={this.onClickForward}>
+              {forwardArrow}
+            </GoUpOne>
           </StyledUl>
         </span>
       );
@@ -266,6 +269,9 @@ class Pagination extends React.Component {
             {firstButton}
             ...
             {last4Buttons}
+            <GoUpOne type="button" onClick={this.onClickForward}>
+              {forwardArrow}
+            </GoUpOne>
           </StyledUl>
         </span>
       );
