@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
     if (this.state.query === '') {
       return;
     }
-    const {query} = this.state;
+    const { query } = this.state;
     const chunks = [];
     const allReviews = this.props.reviews;
     const oldPages = this.props.pages;
