@@ -38,7 +38,7 @@ const BorderDiv = styled.div`
     border-bottom-color: var(--color-divider, #EBEBEB) !important;
 `;
 // ------------------------------------ COMPONENT -------------------------------
-class EachReview extends React.Component {
+class EachSearchReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = { clickedReadMore: false };
@@ -97,4 +97,4 @@ class EachReview extends React.Component {
     );
   }
 }
-export default EachReview;
+export default EachSearchReview;

@@ -14,6 +14,11 @@ const ReviewsBack = styled.button`
   color: var(--color-text-link, #008489) !important;
   font-family: var(--font-font_family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;
   text-decoration-line: var(--font-link-text-decoration-line, none) !important;
+  background: transparent !important;
+  border: 0px !important;
+  cursor: pointer !important;
+  margin: 0px !important;
+  padding: 0px !important;
 `;
 
 const MainDiv = styled.div`
@@ -105,16 +110,29 @@ class App extends React.Component {
   // ------------------------ Search functions ------------------------
 
   onSearchHandler(chunksArray, filteredData, oldData, oldChunks, searchWord) {
-    this.setState({
-      pages: chunksArray,
-      displayedReviews: chunksArray[0],
-      pageNumber: 0,
-      searched: true,
-      searchReviews: filteredData,
-      startData: oldData,
-      startChunks: oldChunks,
-      query: searchWord,
-    });
+    if (filteredData.length === 0) {
+      this.setState({
+        pages: chunksArray,
+        displayedReviews: [],
+        pageNumber: 0,
+        searched: true,
+        searchReviews: filteredData,
+        startData: oldData,
+        startChunks: oldChunks,
+        query: searchWord,
+      });
+    } else {
+      this.setState({
+        pages: chunksArray,
+        displayedReviews: chunksArray[0],
+        pageNumber: 0,
+        searched: true,
+        searchReviews: filteredData,
+        startData: oldData,
+        startChunks: oldChunks,
+        query: searchWord,
+      });
+    }
   }
 
   onClickHandler(e) {
@@ -176,6 +194,7 @@ class App extends React.Component {
                 search={this.onSearchHandler}
                 reviews={this.state.reviewsData}
                 pages={this.state.pages}
+                state={this.state}
               />
             </div>
           </div>
@@ -187,7 +206,7 @@ class App extends React.Component {
           <ReviewStars style={{ borderBottom: 'solid' }} ratings={this.state.reviewsData} />
 
           <div>
-            <ReviewList reviews={this.state.displayedReviews} />
+            <ReviewList reviews={this.state.displayedReviews} searched={this.state.searched} />
           </div>
 
           <nav>
@@ -199,22 +218,89 @@ class App extends React.Component {
               page={this.state.pageNumber}
             />
           </nav>
+
+        </MainDiv>
+      );
+    }
+    if (this.state.searched && this.state.displayedReviews.length > 0) {
+      return (
+        <MainDiv>
+
+          <div>
+            <AllReviewsDiv>
+              <AllReviewsSpan>
+                {this.state.reviewsData.length}
+                {' '}
+                    Reviews
+              </AllReviewsSpan>
+            </AllReviewsDiv>
+            <div>
+              <SearchBar search={this.onSearchHandler} />
+            </div>
+          </div>
+
+          <AfterSearch>
+            <LineAfter />
+          </AfterSearch>
+
+          <div>
+            {this.state.searchReviews.length}
+            {' '}
+            guests have mentioned
+            {' "'}
+            <span style={{ fontWeight: 'bold' }}>
+              {this.state.query}
+            </span>
+            {'"'}
+          </div>
+
+          <div>
+            <span>
+              <ReviewsBack
+                type="button"
+                onClick={e => this.onClickHandler(e)}
+              >
+                Back to all reviews
+              </ReviewsBack>
+            </span>
+          </div>
+
+          <AfterSearch>
+            <LineAfter />
+          </AfterSearch>
+
+          <div>
+            <ReviewList reviews={this.state.displayedReviews} searched={this.state.searched} />
+          </div>
+          <nav>
+            <Pagination
+              pages={this.state.pages}
+              changePage={this.changePage}
+              goBack={this.goBack}
+              goForward={this.goForward}
+              page={this.state.pageNumber}
+            />
+          </nav>
+
         </MainDiv>
       );
     }
     return (
       <MainDiv>
-
-        <div>
+        <div style={{ marginBottom: '12px' }}>
           <AllReviewsDiv>
             <AllReviewsSpan>
               {this.state.reviewsData.length}
               {' '}
-                  Reviews
+                Reviews
             </AllReviewsSpan>
           </AllReviewsDiv>
           <div>
-            <SearchBar search={this.onSearchHandler} />
+            <SearchBar
+              search={this.onSearchHandler}
+              reviews={this.state.reviewsData}
+              pages={this.state.pages}
+            />
           </div>
         </div>
 
@@ -223,9 +309,7 @@ class App extends React.Component {
         </AfterSearch>
 
         <div>
-          {this.state.searchReviews.length}
-          {' '}
-          guests have mentioned
+            None of our guests have mentioned
           {' "'}
           <span style={{ fontWeight: 'bold' }}>
             {this.state.query}
@@ -239,25 +323,10 @@ class App extends React.Component {
               type="button"
               onClick={e => this.onClickHandler(e)}
             >
-              Back to all reviews
+                Back to all reviews
             </ReviewsBack>
           </span>
         </div>
-
-        <div>
-          <ReviewList reviews={this.state.displayedReviews} />
-        </div>
-
-        <nav>
-          <Pagination
-            pages={this.state.pages}
-            changePage={this.changePage}
-            goBack={this.goBack}
-            goForward={this.goForward}
-            page={this.state.pageNumber}
-          />
-        </nav>
-
       </MainDiv>
     );
   }
