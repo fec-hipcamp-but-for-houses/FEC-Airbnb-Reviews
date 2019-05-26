@@ -18,7 +18,7 @@ class MappingOverData extends React.Component {
           {this.props.reviews.map((review) => {
             review.firstHalf = review.message.slice(0, 240);
             review.lastHalf = review.message.slice(240);
-            return <EachSearchReview review={review} key={review.id} />;
+            return <EachSearchReview review={review} key={review.id} query={this.props.query} />;
           })}
         </div>
       );

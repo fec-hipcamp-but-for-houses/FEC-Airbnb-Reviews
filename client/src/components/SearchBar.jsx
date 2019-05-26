@@ -37,17 +37,6 @@ class SearchBar extends React.Component {
         return review;
       }
     });
-    // --------------------------- Filter through each Message ---------------------
-    for (let j = 0; j < filtered.length; j += 1) {
-      const messages = filtered[j].message.split(' ');
-      for (let k = 0; k < messages.length; k += 1) {
-        if (messages[k].includes(`${query}`)) {
-          messages[k] = messages[k].toUpperCase();
-        }
-      }
-      const newMessages = messages.join(' ');
-      filtered[j].message = newMessages;
-    }
     // --------------------------Break Reviews into Chunks for pagination -----------------
     for (let i = 0; i < filtered.length; i += 5) {
       const myChunk = filtered.slice(i, i + 5);

@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -51,7 +52,36 @@ class EachSearchReview extends React.Component {
     this.setState({ clickedReadMore: true });
   }
 
+  breakUpString(string, query) {
+    const index = string.indexOf(query);
+    const firstHalf = string.slice(0, index);
+    console.log('this is firstHalf', firstHalf);
+    const rightWord = string.slice(index, index + query.length);
+    console.log('this is the word', rightWord);
+    const lastHalf = string.slice(index + query.length);
+    console.log('THIS IS THE LAST HALF', lastHalf);
+  }
+
   render() {
+    // ------------------------- Changing things inside of the message ------------------------
+
+    const index = this.props.review.firstHalf.indexOf(this.props.query);
+    const firstPart = (this.props.review.firstHalf.slice(0, index));
+    console.log('this is firstHalf', firstPart);
+    const rightWord = this.props.review.firstHalf.slice(index, index + this.props.query.length);
+    const boldRightWord = (<b>{rightWord}</b>);
+    console.log('this is the word', boldRightWord);
+    const lastPart = this.props.review.firstHalf.slice(index + this.props.query.length);
+    console.log('THIS IS THE LAST HALF', lastPart);
+    const wholeNew = (
+      <p>
+        {firstPart}
+        {boldRightWord}
+        {lastPart}
+      </p>
+    );
+
+    // ----------------------- Render function ---------------------------
     if (this.props.review.firstHalf.length < 240) {
       return (
         <BorderDiv style={{ borderBottom: 'solid' }}>
@@ -61,7 +91,7 @@ class EachSearchReview extends React.Component {
             <DateSpan>{this.props.review.date}</DateSpan>
           </div>
           <div style={{ margin: 16 }}>
-            {this.props.review.firstHalf}
+            {wholeNew}
           </div>
         </BorderDiv>
       );

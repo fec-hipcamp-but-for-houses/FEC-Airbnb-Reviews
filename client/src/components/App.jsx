@@ -206,7 +206,11 @@ class App extends React.Component {
           <ReviewStars style={{ borderBottom: 'solid' }} ratings={this.state.reviewsData} />
 
           <div>
-            <ReviewList reviews={this.state.displayedReviews} searched={this.state.searched} />
+            <ReviewList
+              reviews={this.state.displayedReviews}
+              searched={this.state.searched}
+              query={this.state.query}
+            />
           </div>
 
           <nav>
@@ -270,7 +274,11 @@ class App extends React.Component {
           </AfterSearch>
 
           <div>
-            <ReviewList reviews={this.state.displayedReviews} searched={this.state.searched} />
+            <ReviewList
+              reviews={this.state.displayedReviews}
+              searched={this.state.searched}
+              query={this.state.query}
+            />
           </div>
           <nav>
             <Pagination
