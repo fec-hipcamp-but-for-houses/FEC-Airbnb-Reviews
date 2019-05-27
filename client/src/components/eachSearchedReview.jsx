@@ -67,11 +67,19 @@ class EachSearchReview extends React.Component {
     const lastPart = this.props.review.firstHalf.slice(index + this.props.query.length);
     console.log('THIS IS THE LAST HALF', lastPart);
     const wholeNew = (
-      <div>
+      <p>
         {firstPart}
         {boldRightWord}
         {lastPart}
-      </div>
+      </p>
+    );
+    const wholeNewEverything = (
+      <p>
+        {firstPart}
+        {boldRightWord}
+        {lastPart}
+        {this.props.review.lastHalf}
+      </p>
     );
 
     // ----------------------- Render function ---------------------------
@@ -114,7 +122,7 @@ class EachSearchReview extends React.Component {
           <DateSpan>{this.props.review.date}</DateSpan>
         </div>
         <div style={{ margin: 16 }}>
-          {this.props.review.firstHalf + this.props.review.lastHalf}
+          {wholeNewEverything}
         </div>
       </BorderDiv>
     );
