@@ -21,7 +21,7 @@ const seedingMyMessages = () => {
     const year = ['2015', '2016', '2017', '2018', '2019'];
     const message = faker.lorem.sentences();
     const listing = faker.random.number({ min: 1, max: 100 });
-    const username = faker.internet.userName();
+    const username = faker.name.firstName();
     const userId = faker.random.number(800);
     const profilePic = faker.internet.avatar();
     const date = `${month[Math.floor(Math.random() * 12)]} ${year[Math.floor(Math.random() * 5)]}`;
