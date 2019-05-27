@@ -18,6 +18,7 @@ const ReviewsDiv = styled.div`
   display: table;
   box-sizing: border-box;
   font-size: 14px;
+  display: table-cell;
 `;
 
 const EachSection = styled.div`
@@ -35,7 +36,7 @@ const SeparateLeft = styled.div`
 `;
 
 const StyledSpan = styled.span`
-  padding-right: 8px;
+  padding-right: 112px;
   padding-left: 8px;
   font-weight: 400;
   line-height: 1.375em;
