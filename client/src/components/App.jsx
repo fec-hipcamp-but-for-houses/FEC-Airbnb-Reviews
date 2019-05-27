@@ -20,6 +20,9 @@ const ReviewsBack = styled.button`
   cursor: pointer !important;
   margin: 0px !important;
   padding: 0px !important;
+  float: right;
+  font-size: initial;
+  line-height: 0px;
 `;
 
 const MainDiv = styled.div`
@@ -31,6 +34,7 @@ const MainDiv = styled.div`
     margin: 0;
     -webkit-font-smoothing: antialiased;
     max-width: 892px;
+    padding-left: 30px
 `;
 
 const AfterSearch = styled.div`

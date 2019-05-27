@@ -38,7 +38,6 @@ const BorderDiv = styled.div`
     border-bottom-width: thin;
     border-bottom-color: var(--color-divider, #EBEBEB);
     margin-bottom: 35px;
-    margin-left: 70px; 
     max-width: 696px;
 `;
 // ------------------------------------ COMPONENT -------------------------------
