@@ -15,7 +15,7 @@ CREATE TABLE Messages (
   username VARCHAR(30),
   profile_picture TEXT,
   listing INT,
-  date DATE,
+  date VARCHAR(200),
   accuracy DECIMAL(4,2),
   communication DECIMAL(4,2),
   cleanliness DECIMAL(4,2),
