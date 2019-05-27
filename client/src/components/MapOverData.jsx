@@ -18,7 +18,6 @@ class MappingOverData extends React.Component {
           // -------------- GETTING MY DATE FORMATTED CORRECTLY -------------------------
           const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
           let theMonth = '';
-          console.log(review.date.slice(5, 7));
           if (review.date.slice(5, 7) === '01') {
             theMonth = months[0];
           }
@@ -57,7 +56,6 @@ class MappingOverData extends React.Component {
           }
           const year = review.date.slice(0, 4);
           const finalDate = `${theMonth} ${year}`;
-          console.log(finalDate);
           review.date = finalDate;
           // ---------------------------- SPLITING MESSAGE INTO TWO PARTS --------------------------
           review.firstHalf = review.message.slice(0, 240);
