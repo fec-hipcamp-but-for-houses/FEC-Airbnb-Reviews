@@ -131,6 +131,7 @@ class Pagination extends React.Component {
     }
     // --------------------------- GROUP OF PAGES -----------------------------
     const firstButton = buttons[0];
+    const first2Buttons = buttons.slice(0, 2);
     const first3Buttons = buttons.slice(0, 3);
     const first4Buttons = buttons.slice(0, 4);
     const first5Buttons = buttons.slice(0, 5);
@@ -177,6 +178,136 @@ class Pagination extends React.Component {
       </CircleDiv>
     );
     // --------------------------- PAGINATION RENDERING -----------------------
+
+    // -------------------- Paginiation EDGE CASES -------------------------
+    if (page === 0 && first3Buttons.length === 1) {
+      return (
+        <span>
+          {console.log('hello')}
+        </span>
+      );
+    }
+    if (page === 0 && first3Buttons.length === 2) {
+      return (
+        <span>
+          <StyledUl>
+            {first2Buttons}
+            <GoUpOne type="button" onClick={this.onClickForward}>
+              {forwardArrow}
+            </GoUpOne>
+          </StyledUl>
+        </span>
+      );
+    }
+    if (page === 0 && buttons.length === 3) {
+      return (
+        <span>
+          <StyledUl>
+            {first3Buttons}
+            <GoUpOne type="button" onClick={this.onClickForward}>
+              {forwardArrow}
+            </GoUpOne>
+          </StyledUl>
+        </span>
+      );
+    }
+    if (page === 1 && buttons.length === 3) {
+      return (
+        <span>
+          <StyledUl>
+            <GoUpOne type="button" onClick={this.onClickBack}>
+              {backArrow}
+            </GoUpOne>
+            {first3Buttons}
+            <GoUpOne type="button" onClick={this.onClickForward}>
+              {forwardArrow}
+            </GoUpOne>
+          </StyledUl>
+        </span>
+      );
+    }
+    if (page === 1 && buttons.length === 2) {
+      return (
+        <span>
+          <StyledUl>
+            <GoUpOne type="button" onClick={this.onClickBack}>
+              {backArrow}
+            </GoUpOne>
+            {first2Buttons}
+          </StyledUl>
+        </span>
+      );
+    }
+    if (page === 2 && buttons.length === 3) {
+      return (
+        <span>
+          <StyledUl>
+            <GoUpOne type="button" onClick={this.onClickBack}>
+              {backArrow}
+            </GoUpOne>
+            {first3Buttons}
+          </StyledUl>
+        </span>
+      );
+    }
+    if (page === 2 && buttons.length === 4) {
+      return (
+        <span>
+          <StyledUl>
+            <GoUpOne type="button" onClick={this.onClickBack}>
+              {backArrow}
+            </GoUpOne>
+            {first4Buttons}
+            <GoUpOne type="button" onClick={this.onClickForward}>
+              {forwardArrow}
+            </GoUpOne>
+          </StyledUl>
+        </span>
+      );
+    }
+    if (page === 2 && buttons.length === 5) {
+      return (
+        <span>
+          <StyledUl>
+            <GoUpOne type="button" onClick={this.onClickBack}>
+              {backArrow}
+            </GoUpOne>
+            {first5Buttons}
+            <GoUpOne type="button" onClick={this.onClickForward}>
+              {forwardArrow}
+            </GoUpOne>
+          </StyledUl>
+        </span>
+      );
+    }
+    if (page === 3 && buttons.length === 4) {
+      return (
+        <span>
+          <StyledUl>
+            <GoUpOne type="button" onClick={this.onClickBack}>
+              {backArrow}
+            </GoUpOne>
+            {first4Buttons}
+          </StyledUl>
+        </span>
+      );
+    }
+    if (page === 3 && buttons.length === 5) {
+      return (
+        <span>
+          <StyledUl>
+            <GoUpOne type="button" onClick={this.onClickBack}>
+              {backArrow}
+            </GoUpOne>
+            {first5Buttons}
+            <GoUpOne type="button" onClick={this.onClickForward}>
+              {forwardArrow}
+            </GoUpOne>
+          </StyledUl>
+        </span>
+      );
+    }
+    // -------------------- Normal pagination ------------------
     if (page === 0) {
       return (
         <span>
