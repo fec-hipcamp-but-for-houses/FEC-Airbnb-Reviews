@@ -20,13 +20,13 @@ const DateSpan = styled.span`
 const UsernamePosition = styled.div`
   display: inline-box;
   position: absolute;
-  margin: 0px !important;
-  word-wrap: break-word !important;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  line-height: 1.375em !important;
-  color: #484848 !important;
+  margin: 0px;
+  word-wrap: break-word;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-size: 16px;
+  font-weight: 600; 
+  line-height: 1.375em; 
+  color: #484848; 
 `;
 
 const ReadMoreSpan = styled.span`
@@ -35,8 +35,11 @@ const ReadMoreSpan = styled.span`
 
 const BorderDiv = styled.div`
     border-bottom: solid;
-    border-bottom-width: var(--border-rule-border-width, 1px) !important;
-    border-bottom-color: var(--color-divider, #EBEBEB) !important;
+    border-bottom-width: thin;
+    border-bottom-color: var(--color-divider, #EBEBEB);
+    margin-bottom: 35px;
+    margin-left: 70px; 
+    max-width: 696px;
 `;
 // ------------------------------------ COMPONENT -------------------------------
 class EachSearchReview extends React.Component {
@@ -84,7 +87,7 @@ class EachSearchReview extends React.Component {
     // ----------------------- Render function ---------------------------
     if (this.props.review.firstHalf.length < 240) {
       return (
-        <BorderDiv style={{ borderBottom: 'solid' }}>
+        <BorderDiv>
           <div>
             <ImageStyle src={this.props.review.profile_picture} />
             <UsernamePosition>{this.props.review.username}</UsernamePosition>
@@ -98,7 +101,7 @@ class EachSearchReview extends React.Component {
     }
     if (this.state.clickedReadMore === false && this.props.review.firstHalf.length === 240) {
       return (
-        <BorderDiv style={{ borderBottom: 'solid' }}>
+        <BorderDiv>
           <div>
             <ImageStyle src={this.props.review.profile_picture} />
             <UsernamePosition>{this.props.review.username}</UsernamePosition>
@@ -114,7 +117,7 @@ class EachSearchReview extends React.Component {
       );
     }
     return (
-      <BorderDiv style={{ borderBottom: 'solid' }}>
+      <BorderDiv>
         <div>
           <ImageStyle src={this.props.review.profile_picture} />
           <UsernamePosition>{this.props.review.username}</UsernamePosition>

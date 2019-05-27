@@ -8,6 +8,7 @@ import ReviewList from './MapOverData.jsx';
 import ReviewStars from './ReviewStars.jsx';
 import Pagination from './pagination.jsx';
 import SearchBar from './SearchBar.jsx';
+import stars from './styleSheet.css';
 
 // ------------------------- STYLED COMPONENTS -------------------------
 const ReviewsBack = styled.button`
@@ -29,6 +30,7 @@ const MainDiv = styled.div`
     background-color: #fff;
     margin: 0;
     -webkit-font-smoothing: antialiased;
+    max-width: 892px;
 `;
 
 const AfterSearch = styled.div`
@@ -62,6 +64,21 @@ const AllReviewsSpan = styled.span`
     color: #484848 !important;
     padding-top: 2px !important;
     padding-bottom: 2px !important;
+`;
+
+const StarSpan = styled.span`
+  padding-left: 20px;
+  padding-right: 100px;
+  position: absolute;
+  line-height: 1.25em !important;
+
+`;
+
+const FormPicDiv = styled.div`
+  border: solid;
+  border-radius: 5px;
+  border-width: thin;
+  display: inline-box;
 `;
 // ------------------------ COMPONENT ----------------------------------
 
@@ -186,17 +203,36 @@ class App extends React.Component {
               <AllReviewsSpan>
                 {this.state.reviewsData.length}
                 {' '}
-                Reviews
+                  Reviews
               </AllReviewsSpan>
+              <StarSpan>
+                <div className={stars.starRating} title="70%">
+                  <div className={stars.backStars}>
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+
+                    <div className={stars.frontStars} style={{ width: '70%' }}>
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                    </div>
+                  </div>
+                </div>
+              </StarSpan>
             </AllReviewsDiv>
-            <div>
+            <FormPicDiv>
               <SearchBar
                 search={this.onSearchHandler}
                 reviews={this.state.reviewsData}
                 pages={this.state.pages}
                 state={this.state}
               />
-            </div>
+            </FormPicDiv>
           </div>
 
           <AfterSearch>
@@ -237,10 +273,34 @@ class App extends React.Component {
                 {' '}
                     Reviews
               </AllReviewsSpan>
+              <StarSpan>
+                <div className={stars.starRating} title="70%">
+                  <div className={stars.backStars}>
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+
+                    <div className={stars.frontStars} style={{ width: '70%' }}>
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                    </div>
+                  </div>
+                </div>
+              </StarSpan>
             </AllReviewsDiv>
-            <div>
-              <SearchBar search={this.onSearchHandler} />
-            </div>
+            <FormPicDiv>
+              <SearchBar
+                search={this.onSearchHandler}
+                reviews={this.state.reviewsData}
+                pages={this.state.pages}
+                state={this.state}
+              />
+            </FormPicDiv>
           </div>
 
           <AfterSearch>
@@ -302,14 +362,34 @@ class App extends React.Component {
               {' '}
                 Reviews
             </AllReviewsSpan>
+            <StarSpan>
+              <div className={stars.starRating} title="70%">
+                <div className={stars.backStars}>
+                  <i className="fas fa-star" aria-hidden="true" />
+                  <i className="fas fa-star" aria-hidden="true" />
+                  <i className="fas fa-star" aria-hidden="true" />
+                  <i className="fas fa-star" aria-hidden="true" />
+                  <i className="fas fa-star" aria-hidden="true" />
+
+                  <div className={stars.frontStars} style={{ width: '70%' }}>
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            </StarSpan>
           </AllReviewsDiv>
-          <div>
+          <FormPicDiv>
             <SearchBar
               search={this.onSearchHandler}
               reviews={this.state.reviewsData}
               pages={this.state.pages}
+              state={this.state}
             />
-          </div>
+          </FormPicDiv>
         </div>
 
         <AfterSearch>
