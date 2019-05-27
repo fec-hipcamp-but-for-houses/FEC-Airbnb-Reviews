@@ -8,12 +8,18 @@ import ReviewList from './MapOverData.jsx';
 import ReviewStars from './ReviewStars.jsx';
 import Pagination from './pagination.jsx';
 import SearchBar from './SearchBar.jsx';
+import stars from './styleSheet.css';
 
 // ------------------------- STYLED COMPONENTS -------------------------
 const ReviewsBack = styled.button`
   color: var(--color-text-link, #008489) !important;
   font-family: var(--font-font_family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;
   text-decoration-line: var(--font-link-text-decoration-line, none) !important;
+  background: transparent !important;
+  border: 0px !important;
+  cursor: pointer !important;
+  margin: 0px !important;
+  padding: 0px !important;
 `;
 
 const MainDiv = styled.div`
@@ -24,6 +30,7 @@ const MainDiv = styled.div`
     background-color: #fff;
     margin: 0;
     -webkit-font-smoothing: antialiased;
+    max-width: 892px;
 `;
 
 const AfterSearch = styled.div`
@@ -46,14 +53,6 @@ const AllReviewsDiv = styled.div`
     position: relative !important;
 `;
 
-const SearchBarDiv = styled.div`
-    width: 33.3333% !important;
-    float: left !important;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-    min-height: 1px !important;
-    position: relative !important;
-`;
 
 const AllReviewsSpan = styled.span`
       margin: 0px !important;
@@ -65,6 +64,21 @@ const AllReviewsSpan = styled.span`
     color: #484848 !important;
     padding-top: 2px !important;
     padding-bottom: 2px !important;
+`;
+
+const StarSpan = styled.span`
+  padding-left: 20px;
+  padding-right: 100px;
+  position: absolute;
+  line-height: 1.25em !important;
+
+`;
+
+const FormPicDiv = styled.div`
+  border: solid;
+  border-radius: 5px;
+  border-width: thin;
+  display: inline-box;
 `;
 // ------------------------ COMPONENT ----------------------------------
 
@@ -113,16 +127,29 @@ class App extends React.Component {
   // ------------------------ Search functions ------------------------
 
   onSearchHandler(chunksArray, filteredData, oldData, oldChunks, searchWord) {
-    this.setState({
-      pages: chunksArray,
-      displayedReviews: chunksArray[0],
-      pageNumber: 0,
-      searched: true,
-      searchReviews: filteredData,
-      startData: oldData,
-      startChunks: oldChunks,
-      query: searchWord,
-    });
+    if (filteredData.length === 0) {
+      this.setState({
+        pages: chunksArray,
+        displayedReviews: [],
+        pageNumber: 0,
+        searched: true,
+        searchReviews: filteredData,
+        startData: oldData,
+        startChunks: oldChunks,
+        query: searchWord,
+      });
+    } else {
+      this.setState({
+        pages: chunksArray,
+        displayedReviews: chunksArray[0],
+        pageNumber: 0,
+        searched: true,
+        searchReviews: filteredData,
+        startData: oldData,
+        startChunks: oldChunks,
+        query: searchWord,
+      });
+    }
   }
 
   onClickHandler(e) {
@@ -176,16 +203,36 @@ class App extends React.Component {
               <AllReviewsSpan>
                 {this.state.reviewsData.length}
                 {' '}
-                Reviews
+                  Reviews
               </AllReviewsSpan>
+              <StarSpan>
+                <div className={stars.starRating} title="70%">
+                  <div className={stars.backStars}>
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+
+                    <div className={stars.frontStars} style={{ width: '70%' }}>
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                    </div>
+                  </div>
+                </div>
+              </StarSpan>
             </AllReviewsDiv>
-            <div>
+            <FormPicDiv>
               <SearchBar
                 search={this.onSearchHandler}
                 reviews={this.state.reviewsData}
                 pages={this.state.pages}
+                state={this.state}
               />
-            </div>
+            </FormPicDiv>
           </div>
 
           <AfterSearch>
@@ -195,7 +242,11 @@ class App extends React.Component {
           <ReviewStars style={{ borderBottom: 'solid' }} ratings={this.state.reviewsData} />
 
           <div>
-            <ReviewList reviews={this.state.displayedReviews} />
+            <ReviewList
+              reviews={this.state.displayedReviews}
+              searched={this.state.searched}
+              query={this.state.query}
+            />
           </div>
 
           <nav>
@@ -207,23 +258,138 @@ class App extends React.Component {
               page={this.state.pageNumber}
             />
           </nav>
+
+        </MainDiv>
+      );
+    }
+    if (this.state.searched && this.state.displayedReviews.length > 0) {
+      return (
+        <MainDiv>
+
+          <div>
+            <AllReviewsDiv>
+              <AllReviewsSpan>
+                {this.state.reviewsData.length}
+                {' '}
+                    Reviews
+              </AllReviewsSpan>
+              <StarSpan>
+                <div className={stars.starRating} title="70%">
+                  <div className={stars.backStars}>
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+
+                    <div className={stars.frontStars} style={{ width: '70%' }}>
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                      <i className="fas fa-star" aria-hidden="true" />
+                    </div>
+                  </div>
+                </div>
+              </StarSpan>
+            </AllReviewsDiv>
+            <FormPicDiv>
+              <SearchBar
+                search={this.onSearchHandler}
+                reviews={this.state.reviewsData}
+                pages={this.state.pages}
+                state={this.state}
+              />
+            </FormPicDiv>
+          </div>
+
+          <AfterSearch>
+            <LineAfter />
+          </AfterSearch>
+
+          <div>
+            {this.state.searchReviews.length}
+            {' '}
+            guests have mentioned
+            {' "'}
+            <span style={{ fontWeight: 'bold' }}>
+              {this.state.query}
+            </span>
+            {'"'}
+          </div>
+
+          <div>
+            <span>
+              <ReviewsBack
+                type="button"
+                onClick={e => this.onClickHandler(e)}
+              >
+                Back to all reviews
+              </ReviewsBack>
+            </span>
+          </div>
+
+          <AfterSearch>
+            <LineAfter />
+          </AfterSearch>
+
+          <div>
+            <ReviewList
+              reviews={this.state.displayedReviews}
+              searched={this.state.searched}
+              query={this.state.query}
+            />
+          </div>
+          <nav>
+            <Pagination
+              pages={this.state.pages}
+              changePage={this.changePage}
+              goBack={this.goBack}
+              goForward={this.goForward}
+              page={this.state.pageNumber}
+            />
+          </nav>
+
         </MainDiv>
       );
     }
     return (
       <MainDiv>
-
-        <div>
+        <div style={{ marginBottom: '12px' }}>
           <AllReviewsDiv>
             <AllReviewsSpan>
               {this.state.reviewsData.length}
               {' '}
-                  Reviews
+                Reviews
             </AllReviewsSpan>
+            <StarSpan>
+              <div className={stars.starRating} title="70%">
+                <div className={stars.backStars}>
+                  <i className="fas fa-star" aria-hidden="true" />
+                  <i className="fas fa-star" aria-hidden="true" />
+                  <i className="fas fa-star" aria-hidden="true" />
+                  <i className="fas fa-star" aria-hidden="true" />
+                  <i className="fas fa-star" aria-hidden="true" />
+
+                  <div className={stars.frontStars} style={{ width: '70%' }}>
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                    <i className="fas fa-star" aria-hidden="true" />
+                  </div>
+                </div>
+              </div>
+            </StarSpan>
           </AllReviewsDiv>
-          <div>
-            <SearchBar search={this.onSearchHandler} />
-          </div>
+          <FormPicDiv>
+            <SearchBar
+              search={this.onSearchHandler}
+              reviews={this.state.reviewsData}
+              pages={this.state.pages}
+              state={this.state}
+            />
+          </FormPicDiv>
         </div>
 
         <AfterSearch>
@@ -231,11 +397,12 @@ class App extends React.Component {
         </AfterSearch>
 
         <div>
-          {this.state.searchReviews.length}
-          {' '}
-          guests have mentioned
-          {' '}
-          {`"${this.state.query}"`}
+            None of our guests have mentioned
+          {' "'}
+          <span style={{ fontWeight: 'bold' }}>
+            {this.state.query}
+          </span>
+          {'"'}
         </div>
 
         <div>
@@ -244,25 +411,10 @@ class App extends React.Component {
               type="button"
               onClick={e => this.onClickHandler(e)}
             >
-              Back to all reviews
+                Back to all reviews
             </ReviewsBack>
           </span>
         </div>
-
-        <div>
-          <ReviewList reviews={this.state.displayedReviews} />
-        </div>
-
-        <nav>
-          <Pagination
-            pages={this.state.pages}
-            changePage={this.changePage}
-            goBack={this.goBack}
-            goForward={this.goForward}
-            page={this.state.pageNumber}
-          />
-        </nav>
-
       </MainDiv>
     );
   }

@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -19,13 +20,13 @@ const DateSpan = styled.span`
 const UsernamePosition = styled.div`
   display: inline-box;
   position: absolute;
-  margin: 0px !important;
-  word-wrap: break-word !important;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  line-height: 1.375em !important;
-  color: #484848 !important;
+  margin: 0px;
+  word-wrap: break-word;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-size: 16px;
+  font-weight: 600; 
+  line-height: 1.375em; 
+  color: #484848; 
 `;
 
 const ReadMoreSpan = styled.span`
@@ -34,11 +35,14 @@ const ReadMoreSpan = styled.span`
 
 const BorderDiv = styled.div`
     border-bottom: solid;
-    border-bottom-width: var(--border-rule-border-width, 1px) !important;
-    border-bottom-color: var(--color-divider, #EBEBEB) !important;
+    border-bottom-width: thin;
+    border-bottom-color: var(--color-divider, #EBEBEB);
+    margin-bottom: 35px;
+    margin-left: 70px; 
+    max-width: 696px;
 `;
 // ------------------------------------ COMPONENT -------------------------------
-class EachReview extends React.Component {
+class EachSearchReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = { clickedReadMore: false };
@@ -52,30 +56,57 @@ class EachReview extends React.Component {
   }
 
   render() {
+    // ------------------------- Changing things inside of the message ------------------------
+
+    const index = this.props.review.firstHalf.indexOf(this.props.query);
+    const firstPart = (this.props.review.firstHalf.slice(0, index));
+    console.log('this is firstHalf', firstPart);
+    const rightWord = this.props.review.firstHalf.slice(index, index + this.props.query.length);
+    const boldRightWord = (<b>{rightWord}</b>);
+    console.log('this is the word', boldRightWord);
+    const lastPart = this.props.review.firstHalf.slice(index + this.props.query.length);
+    console.log('THIS IS THE LAST HALF', lastPart);
+    const wholeNew = (
+      <p>
+        {firstPart}
+        {boldRightWord}
+        {lastPart}
+      </p>
+    );
+    const wholeNewEverything = (
+      <p>
+        {firstPart}
+        {boldRightWord}
+        {lastPart}
+        {this.props.review.lastHalf}
+      </p>
+    );
+
+    // ----------------------- Render function ---------------------------
     if (this.props.review.firstHalf.length < 240) {
       return (
-        <BorderDiv style={{ borderBottom: 'solid' }}>
+        <BorderDiv>
           <div>
             <ImageStyle src={this.props.review.profile_picture} />
             <UsernamePosition>{this.props.review.username}</UsernamePosition>
             <DateSpan>{this.props.review.date}</DateSpan>
           </div>
           <div style={{ margin: 16 }}>
-            {this.props.review.firstHalf}
+            {wholeNew}
           </div>
         </BorderDiv>
       );
     }
     if (this.state.clickedReadMore === false && this.props.review.firstHalf.length === 240) {
       return (
-        <BorderDiv style={{ borderBottom: 'solid' }}>
+        <BorderDiv>
           <div>
             <ImageStyle src={this.props.review.profile_picture} />
             <UsernamePosition>{this.props.review.username}</UsernamePosition>
             <DateSpan>{this.props.review.date}</DateSpan>
           </div>
           <div style={{ margin: 16 }}>
-            {this.props.review.firstHalf}
+            {wholeNew}
             <ReadMoreSpan onClick={this.onClickHandle}>
               ...Read More
             </ReadMoreSpan>
@@ -84,17 +115,17 @@ class EachReview extends React.Component {
       );
     }
     return (
-      <BorderDiv style={{ borderBottom: 'solid' }}>
+      <BorderDiv>
         <div>
           <ImageStyle src={this.props.review.profile_picture} />
           <UsernamePosition>{this.props.review.username}</UsernamePosition>
           <DateSpan>{this.props.review.date}</DateSpan>
         </div>
         <div style={{ margin: 16 }}>
-          {this.props.review.firstHalf + this.props.review.lastHalf}
+          {wholeNewEverything}
         </div>
       </BorderDiv>
     );
   }
 }
-export default EachReview;
+export default EachSearchReview;
