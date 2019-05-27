@@ -55,16 +55,6 @@ class EachSearchReview extends React.Component {
     this.setState({ clickedReadMore: true });
   }
 
-  breakUpString(string, query) {
-    const index = string.indexOf(query);
-    const firstHalf = string.slice(0, index);
-    console.log('this is firstHalf', firstHalf);
-    const rightWord = string.slice(index, index + query.length);
-    console.log('this is the word', rightWord);
-    const lastHalf = string.slice(index + query.length);
-    console.log('THIS IS THE LAST HALF', lastHalf);
-  }
-
   render() {
     // ------------------------- Changing things inside of the message ------------------------
 
@@ -77,11 +67,11 @@ class EachSearchReview extends React.Component {
     const lastPart = this.props.review.firstHalf.slice(index + this.props.query.length);
     console.log('THIS IS THE LAST HALF', lastPart);
     const wholeNew = (
-      <p>
+      <div>
         {firstPart}
         {boldRightWord}
         {lastPart}
-      </p>
+      </div>
     );
 
     // ----------------------- Render function ---------------------------
@@ -108,7 +98,7 @@ class EachSearchReview extends React.Component {
             <DateSpan>{this.props.review.date}</DateSpan>
           </div>
           <div style={{ margin: 16 }}>
-            {this.props.review.firstHalf}
+            {wholeNew}
             <ReadMoreSpan onClick={this.onClickHandle}>
               ...Read More
             </ReadMoreSpan>
