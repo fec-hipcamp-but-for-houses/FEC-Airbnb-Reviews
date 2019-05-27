@@ -19,7 +19,7 @@ const seedingMyMessages = () => {
   for (let i = 1; i <= 5000; i += 1) {
     const message = faker.lorem.sentences();
     const listing = faker.random.number({ min: 1, max: 100 });
-    const username = faker.internet.userName();
+    const username = faker.name.firstName();
     const userId = faker.random.number(800);
     const profilePic = faker.internet.avatar();
     const date = faker.date.between('2015-01-01', '2019-04-30');
