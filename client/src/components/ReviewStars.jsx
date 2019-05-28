@@ -86,7 +86,7 @@ class ReviewStars extends React.Component {
           <EachSection>
 
             <StyledSpan>
-              Accuracy:
+              Accuracy
             </StyledSpan>
 
             <StarSpan>
@@ -114,7 +114,7 @@ class ReviewStars extends React.Component {
           <EachSection>
 
             <StyledSpan>
-              Communication:
+              Communication
             </StyledSpan>
 
             <StarSpan>
@@ -142,7 +142,7 @@ class ReviewStars extends React.Component {
           <EachSection>
 
             <StyledSpan>
-              Cleanliness:
+              Cleanliness
             </StyledSpan>
 
             <StarSpan>
