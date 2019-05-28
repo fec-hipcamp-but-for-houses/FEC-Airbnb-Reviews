@@ -263,26 +263,8 @@ class App extends React.Component {
                 {this.state.reviewsData.length}
                 {' '}
                     Reviews
+                <MainReviewStars ratings={this.state.reviewsData} />
               </AllReviewsSpan>
-              <StarSpan>
-                <div className={stars.starRating} title="70%">
-                  <div className={stars.backStars}>
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-
-                    <div className={stars.frontStars} style={{ width: '70%' }}>
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                    </div>
-                  </div>
-                </div>
-              </StarSpan>
             </AllReviewsDiv>
             <FormPicDiv>
               <SearchBar
@@ -352,26 +334,8 @@ class App extends React.Component {
               {this.state.reviewsData.length}
               {' '}
                 Reviews
+              <MainReviewStars ratings={this.state.reviewsData} />
             </AllReviewsSpan>
-            <StarSpan>
-              <div className={stars.starRating} title="70%">
-                <div className={stars.backStars}>
-                  <i className="fas fa-star" aria-hidden="true" />
-                  <i className="fas fa-star" aria-hidden="true" />
-                  <i className="fas fa-star" aria-hidden="true" />
-                  <i className="fas fa-star" aria-hidden="true" />
-                  <i className="fas fa-star" aria-hidden="true" />
-
-                  <div className={stars.frontStars} style={{ width: '70%' }}>
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                  </div>
-                </div>
-              </div>
-            </StarSpan>
           </AllReviewsDiv>
           <FormPicDiv>
             <SearchBar
