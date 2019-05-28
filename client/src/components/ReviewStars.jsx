@@ -19,6 +19,7 @@ const ReviewsDiv = styled.div`
   box-sizing: border-box;
   font-size: 14px;
   display: table-cell;
+  padding-bottom: 16px;
 `;
 
 const EachSection = styled.div`
