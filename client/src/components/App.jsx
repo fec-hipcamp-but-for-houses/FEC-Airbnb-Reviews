@@ -9,6 +9,7 @@ import ReviewStars from './ReviewStars.jsx';
 import Pagination from './pagination.jsx';
 import SearchBar from './SearchBar.jsx';
 import stars from './styleSheet.css';
+import MainReviewStars from './mainReview.jsx';
 
 // ------------------------- STYLED COMPONENTS -------------------------
 const ReviewsBack = styled.button`
@@ -27,7 +28,7 @@ const ReviewsBack = styled.button`
 
 const MainDiv = styled.div`
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.43;
     color: #484848;
     background-color: #fff;
@@ -65,10 +66,13 @@ const AllReviewsSpan = styled.span`
     font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
     font-size: 24px !important;
     font-weight: 800 !important;
-    line-height: 1.25em !important;
+    line-height: 12px;
+    padding-left: 20px;
+    padding-right: 211px;
     color: #484848 !important;
     padding-top: 2px !important;
     padding-bottom: 2px !important;
+    display: inline-flex;
 `;
 
 const StarSpan = styled.span`
@@ -209,26 +213,8 @@ class App extends React.Component {
                 {this.state.reviewsData.length}
                 {' '}
                   Reviews
+                <MainReviewStars ratings={this.state.reviewsData} />
               </AllReviewsSpan>
-              <StarSpan>
-                <div className={stars.starRating} title="70%">
-                  <div className={stars.backStars}>
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-
-                    <div className={stars.frontStars} style={{ width: '70%' }}>
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                    </div>
-                  </div>
-                </div>
-              </StarSpan>
             </AllReviewsDiv>
             <FormPicDiv>
               <SearchBar

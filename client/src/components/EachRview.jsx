@@ -14,6 +14,7 @@ const ImageStyle = styled.img`
 
 const DateSpan = styled.span`
   position: relative;
+  font-size: 14px;
 `;
 
 const UsernamePosition = styled.div`
