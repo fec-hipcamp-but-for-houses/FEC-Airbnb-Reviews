@@ -28,7 +28,7 @@ const ReviewsBack = styled.button`
 
 const MainDiv = styled.div`
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.43;
     color: #484848;
     background-color: #fff;
