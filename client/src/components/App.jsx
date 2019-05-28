@@ -209,8 +209,8 @@ class App extends React.Component {
                 {this.state.reviewsData.length}
                 {' '}
                   Reviews
+                <MainReviewStars ratings={this.state.reviewsData} />
               </AllReviewsSpan>
-              <MainReviewStars ratings={this.state.reviewsData} />
             </AllReviewsDiv>
             <FormPicDiv>
               <SearchBar
