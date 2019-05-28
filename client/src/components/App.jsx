@@ -9,6 +9,7 @@ import ReviewStars from './ReviewStars.jsx';
 import Pagination from './pagination.jsx';
 import SearchBar from './SearchBar.jsx';
 import stars from './styleSheet.css';
+import MainReviewStars from './mainReview.jsx';
 
 // ------------------------- STYLED COMPONENTS -------------------------
 const ReviewsBack = styled.button`
@@ -209,25 +210,7 @@ class App extends React.Component {
                 {' '}
                   Reviews
               </AllReviewsSpan>
-              <StarSpan>
-                <div className={stars.starRating} title="70%">
-                  <div className={stars.backStars}>
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-                    <i className="fas fa-star" aria-hidden="true" />
-
-                    <div className={stars.frontStars} style={{ width: '70%' }}>
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                      <i className="fas fa-star" aria-hidden="true" />
-                    </div>
-                  </div>
-                </div>
-              </StarSpan>
+              <MainReviewStars ratings={this.state.reviewsData} />
             </AllReviewsDiv>
             <FormPicDiv>
               <SearchBar
