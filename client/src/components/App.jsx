@@ -33,7 +33,7 @@ const MainDiv = styled.div`
     background-color: #fff;
     margin: 0;
     -webkit-font-smoothing: antialiased;
-    max-width: 892px;
+    max-width: 696px;
     padding-left: 30px
 `;
 
@@ -55,6 +55,7 @@ const AllReviewsDiv = styled.div`
     padding-right: 8px !important;
     min-height: 1px !important;
     position: relative !important;
+    display: contents;
 `;
 
 
@@ -72,8 +73,8 @@ const AllReviewsSpan = styled.span`
 
 const StarSpan = styled.span`
   padding-left: 20px;
-  padding-right: 100px;
-  position: absolute;
+  padding-right: 211px;
+  display: inline-flex;
   line-height: 1.25em !important;
 
 `;
