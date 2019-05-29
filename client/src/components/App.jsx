@@ -114,7 +114,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/reviews?randomListing=${Math.floor(Math.random() * 100) + 1}`)
+    axios.get(`http://localhost:3004/reviews?randomListing=${Math.floor(Math.random() * 100) + 1}`)
       .then((data) => {
         const groupedData = [];
         for (let i = 0; i < data.data.length; i += 5) {
