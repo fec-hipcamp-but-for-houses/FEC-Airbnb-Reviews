@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 const model = require('../db/model.js');
 
+
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '../client/public')));
