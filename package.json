@@ -2,14 +2,14 @@
   "name": "fec-airbnb-reviews",
   "version": "",
   "description": "",
-  "author": "",
+  "author": "Zach Pierce",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "test": "jest",
     "seed": "mysql -u root < schema.sql && node seeder.js",
     "react-test": "jest --verbose"
@@ -46,7 +46,6 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
-    "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
