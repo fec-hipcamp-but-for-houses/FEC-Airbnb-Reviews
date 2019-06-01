@@ -1,29 +1,16 @@
-version: '3.3'
+version: '3'
 services:
+  db:
+    build: ./db
+    environment:
+      - MYSQL_DATABASE=reviews
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
   app:
     build: .
     depends_on:
       - db
     ports:
       - "3004:3004"
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_DATABASE: 'reviews'
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-      # So you don't have to use root, but you can if you like
-      MYSQL_USER: 'root'
-      command: npm run seed
-    ports:
-      # <Port exposed> : < MySQL Port running inside container>
-      - '3306:3306'
-    expose:
-      # Opens port 3306 on the container
-      - '3306'
-      # Where our data will be persisted
-    volumes:
-      - my-db:/var/lib/mysql
-# Names our volume
-volumes:
-  my-db:
