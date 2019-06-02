@@ -35,4 +35,4 @@ services:
       - 'db'
       - 'db_seed'
     ports:
-      - "3004:3004"
+      - "80:3004"
