@@ -11,7 +11,7 @@
     "react-dev": "webpack -d --watch",
     "start": "node server/server.js",
     "test": "jest",
-    "seed": "node seeder.js && node server/server.js",
+    "seed": "node server/server.js",
     "react-test": "jest --verbose"
   },
   "dependencies": {
